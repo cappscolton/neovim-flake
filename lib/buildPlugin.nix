@@ -8,12 +8,6 @@ with builtins;
 let
   inherit (prev.vimUtils) buildVimPlugin;
 
-  ts = prev.tree-sitter.override {
-    extraGrammars = {
-      tree-sitter-scala = final.tree-sitter-scala-master;
-    };
-  };
-
   smithy-lsp = pkgs.callPackage ./smithy-lspconfig.nix { };
 
   smithyLspHook = ''
@@ -24,7 +18,6 @@ let
 
   # sync queries of tree-sitter-scala and nvim-treesitter
   queriesHook = ''
-    cp ${inputs.tree-sitter-scala}/queries/scala/* $out/queries/scala/
     cp ${ts.builtGrammars.tree-sitter-smithy}/queries/highlights.scm $out/queries/smithy/highlights.scm
   '';
 
@@ -65,7 +58,6 @@ in
 rec {
   # override at use site with your own preferences
   treesitterGrammars = t: t.withPlugins (p: [
-    p.tree-sitter-scala
     p.tree-sitter-nix
     p.tree-sitter-elm
     p.tree-sitter-haskell
