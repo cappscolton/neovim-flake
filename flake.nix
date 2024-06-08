@@ -444,7 +444,7 @@
           inherit (pkgs.neovimPlugins) nvim-treesitter;
 
           # Main languages enabled
-          ide = default-ide.full.neovim;
+          ide = default-ide.full-nightly.neovim;
           # FIXME: nightly integration is broken
           # see: https://github.com/NixOS/nixpkgs/pull/312312
           #nightly = default-ide.full-nightly.neovim;
