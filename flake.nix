@@ -447,7 +447,7 @@
           ide = default-ide.full-nightly.neovim;
           # FIXME: nightly integration is broken
           # see: https://github.com/NixOS/nixpkgs/pull/312312
-          #nightly = default-ide.full-nightly.neovim;
+          nightly = default-ide.full-nightly.neovim;
 
           # Only Haskell (quite heavy)
           haskell = default-ide.haskell.neovim;
